@@ -47,8 +47,8 @@ def encoder(img, coeff=None, order=None):
 
 
 img = cv2.imread(r"images/Original.jpeg", 0)
-encode_img = encoder(img, order=2)
-decode_img = decode(encode_img.copy(), order=2)
+encode_img = encoder(img, order=100)
+decode_img = decode(encode_img.copy(), order=100)
 plt.figure(figsize=(10, 5))
 plt.subplot(131)
 plt.imshow(img, cmap='gray')
@@ -56,7 +56,8 @@ plt.subplot(132)
 plt.imshow(encode_img, cmap='gray')
 plt.subplot(133)
 plt.imshow(decode_img, cmap='gray')
-print(encode_img, end='\n\n\n\n\n')
-print(decode_img)
+# print(encode_img, end='\n\n\n\n\n')
+# print(decode_img)
+cv2.imwrite('./images/Encoder_predictive_coding.jpeg', cv2.normalize(encode_img, None, alpha=0, beta=255, norm_type=cv2.NORM_MINMAX))
 plt.show()
 
