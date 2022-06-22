@@ -69,16 +69,16 @@ def restone_img(img_shape, gray=True):
 
 if __name__ == '__main__':
     # READ IMAGE
-    img = cv2.imread(r"/Users/nguyenbaophuoc/Downloads/DIP3E_CH08_Original_Images/Fig0809(a).tif", 0)
+    img = cv2.imread(r"./images/Original.jpeg", 0)
 
     # BLOCK TRANSFORM USING DCT
     image_dct = fast_dct_manual(img, 8)
-    bitmap, image_quantize = btc_manual(image_dct, 8, threshold=4/64)
+    bitmap, image_quantize = btc_manual(image_dct, 8, threshold=16/64)
     # image_quantize = (image_quantize//32) * 32  # 7 bit
 
     # Approximate original image
     img_back = idct_manual(image_quantize, 8).astype(int)
     dct_psnr(img, img_back)
     plot_save(img, 'Original.jpeg', size=6)
-    plot_save(img_back, 'Decompression_4.jpeg', size=6)
-    plot_save((img-img_back)**2, "Different_4.jpeg", size=6)
+    plot_save(img_back, 'images/Decompression_16.jpeg', size=6)
+    plot_save((img-img_back)**2, "images/Different_16.jpeg", size=6)
