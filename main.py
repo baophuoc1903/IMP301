@@ -79,6 +79,5 @@ if __name__ == '__main__':
     # Approximate original image
     img_back = idct_manual(image_quantize, 8).astype(int)
     dct_psnr(img, img_back)
-    plot_save(img, 'Original.jpeg', size=6)
     plot_save(img_back, 'images/Decompression_16.jpeg', size=6)
     plot_save((img-img_back)**2, "images/Different_16.jpeg", size=6)
